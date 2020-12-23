@@ -7,11 +7,12 @@ local M = {}
 -- be so nice it's what anyone using this plugin sticks with. It should ideally
 -- work across any well designed colorscheme deriving colors automagically.
 function M.get_defaults()
-  local comment_fg = colors.get_hex("Comment", "fg")
+  local comment_fg = colors.get_hex("DraculaPurple", "fg")
   local normal_fg = colors.get_hex("Normal", "fg")
   local normal_bg = colors.get_hex("Normal", "bg")
   local string_fg = colors.get_hex("String", "fg")
-  local error_fg = colors.get_hex("Error", "fg")
+  local error_fg = colors.get_hex("DraculaError", "fg")
+
 
   local tabline_sel_bg = colors.get_hex("TabLineSel", "bg")
   if not tabline_sel_bg == "none" then
@@ -37,14 +38,14 @@ function M.get_defaults()
       number_style = "superscript",
       buffer_close_icon = "",
       modified_icon = "●",
-      close_icon = "",
+      close_icon = "",
       left_trunc_marker = "",
       right_trunc_marker = "",
       separator_style = "thin",
       tab_size = 18,
-      max_name_length = 18,
+      max_name_length = 30,
       mappings = false,
-      show_buffer_close_icons = true,
+      show_buffer_close_icons = false,
       enforce_regular_tabs = false,
       always_show_bufferline = true,
       persist_buffer_sort = true,
@@ -54,11 +55,11 @@ function M.get_defaults()
     highlights = {
       fill = {
         guifg = comment_fg,
-        guibg = separator_background_color
+        guibg = background_color
       },
       background = {
         guifg = comment_fg,
-        guibg = background_color
+        guibg = separator_background_color
       },
       tab = {
         guifg = comment_fg,
@@ -79,18 +80,18 @@ function M.get_defaults()
       buffer_selected = {
         guifg = normal_fg,
         guibg = normal_bg,
-        gui = "bold,italic"
+        gui = "italic"
       },
       modified = {
-        guifg = string_fg,
+        guifg = error_fg,
         guibg = background_color
       },
       modified_visible = {
-        guifg = string_fg,
+        guifg = error_fg,
         guibg = visible_bg
       },
       modified_selected = {
-        guifg = string_fg,
+        guifg = error_fg,
         guibg = normal_bg
       },
       duplicate_selected = {
